@@ -1,0 +1,10 @@
+<% f.object.product_batch ||= ProductBatch.new %>
+<% f.semantic_fields_for :product_batch do |builder| %>
+  <%= render 'product_batches/inputs', :f => builder %>
+<% end %>
+<%= f.input :sale_quantity %>
+<%= f.input :free_quantity %>
+<%= f.input :rate %>
+<%= f.input :vat, :as => :select, :collection => ProductBatch::VATS, :label_method => Proc.new{ |a| "#{a} %" } %>
+<%= f.input :discount %>
+<%= link_to_remove_fieldset "remove", f %>

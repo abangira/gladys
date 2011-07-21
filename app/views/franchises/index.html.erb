@@ -1,0 +1,15 @@
+<% table_for @franchises do |t| %>
+  <tr>
+    <% semantic_form_for @search do |f| %>
+      <th><%= f.inputs :name_like %></th>
+      <th><%= f.input :address_like %></th>
+      <th><%= f.input :dl_like %></th>
+      <th><%= f.input :tin_like %></th>
+      <th><%= f.input :franchisee_login_like %></th>
+      <th><%= f.submit 'Search' %></th>
+    <% end %>
+  </tr>
+  <%= t.data :actions => :all %>
+<% end %>
+
+<%= will_paginate @franchises %> | <%= link_to 'New franchise', new_franchise_path, :id => 'add_new', :class => 'ui-icon ui-icon-plusthick' %>

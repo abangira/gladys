@@ -1,0 +1,21 @@
+<% table_for @purchase_bills do |t| %>
+  <tr>
+    <% semantic_form_for @search do |f| %>
+      <th><%= f.input :bill_number_like %></th>
+      <th><%= f.input :supplier_name_like %></th>
+      <th><%= f.input :created_at_greater_than %></th>
+      <th><%= f.input :created_at_less_than %></th>
+      <th><%= f.submit 'Search' %></th>
+    <% end %>
+  </tr>
+  <%= t.data :id, :bill_number, :supplier, :created_at, :due_date, :net_amount, :actions => :all %>
+  <tfoot>
+          <tr>
+                  <th> total </th>
+                  <td> <%= @purchase_bills.reduce(0) {|sum, item| sum += item.net_amount()} %></td>
+          </tr>
+  </tfoot>
+
+<% end %>
+
+<%= will_paginate @purchase_bills %> | <%= link_to 'New purchase_bill', new_purchase_bill_path %>

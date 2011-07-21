@@ -1,0 +1,25 @@
+<b>Name:</b>
+<dd><%=h @product.name %></dd>
+
+<b>Manufacturer:</b>
+<dd><%=h @product.manufacturer %></dd>
+
+<b>Schedule:</b>
+<dd><%=h @product.schedule %></dd>
+
+<b>Composition:</b>
+<dd><%=h @product.composition %></dd>
+
+<b>Dosage Form:</b>
+<dd><%=h @product.dosage_form %></dd>
+
+<b>Strength:</b>
+<dd><%=h @product.strength %></dd>
+
+<b>Common uses:</b>
+<dd><%=h @product.common_uses %></dd>
+
+<br>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

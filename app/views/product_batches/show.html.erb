@@ -1,0 +1,48 @@
+<dt>Product:</dt>
+<dd><%=h @product_batch.product.name %></dd>
+
+<dt>Batch code:</dt>
+<dd><%=h @product_batch.batch_code %></dd>
+
+<dt>Mfg date:</dt>
+<dd><%=h @product_batch.mfg_date %></dd>
+
+<dt>Exp date:</dt>
+<dd><%=h @product_batch.exp_date %></dd>
+
+<dt>Price:</dt>
+<dd><%=h @product_batch.mrp %></dd>
+
+<br>
+
+<h6>Purchase Bills:</h6>
+<% table_for @product_batch.purchase_bill_items do |t| %>
+  <% t.data do %>
+    <%= t.cell(:purchase_bill) {|p| p.purchase_bill && link_to(p.purchase_bill.bill_number, p.purchase_bill) } %>
+    <%= t.cell(:purchase_bill) {|p| p.purchase_bill && p.purchase_bill.supplier_name } %>
+    <%= t.cell :sale_quantity %>
+    <%= t.cell :free_quantity %>
+    <%= t.cell :discount %>
+  <% end %>
+<% end %>
+
+<h6>Sale Bills:</h6>
+<% table_for @product_batch.sale_bill_items do |t| %>
+  <% t.data do %>
+    <%= t.cell(:sale_bill) {|p| p.sale_bill && link_to(p.sale_bill.id, p.sale_bill) } %>
+    <%= t.cell(:sale_bill) {|p| p.sale_bill && p.sale_bill.franchise_name } %>
+    <%= t.cell :quantity %>
+  <% end %>
+<% end %>
+
+<h6>Retail Bills:</h6>
+<% table_for @product_batch.bill_items do |t| %>
+  <% t.data do %>
+    <%= t.cell(:bill) {|p| p.bill && link_to(p.bill.id, p.bill) } %>
+    <%= t.cell :quantity %>
+    <%= t.cell :discount %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Edit', edit_product_batch_path(@product_batch) %> |
+<%= link_to 'Back', product_batches_path %>

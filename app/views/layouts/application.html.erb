@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Darwin Pharmacy - <%= controller_name.titleize %></title>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<%- if "production" == RAILS_ENV -%>
+<!-- Exception Hub start -->
+<script type="text/javascript">
+  var ehHost = (("https:" == document.location.protocol) ? "https://" : "http://");
+  document.write(unescape("%3Cscript src='" + ehHost + "js.exceptionhub.com/javascripts/eh.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script>
+  ExceptionHub.setup("14d94f531717c7a3f5f2b01732f5fb88", 246, 'production');
+</script>
+<!-- Exception Hub end -->
+<%- end -%>
+
+<%= stylesheet_link_tag 'yui', 'html5', 'layout/application', action_name %>
+<%= stylesheet_link_tag 'print', :media => 'print' %>
+<%= javascript_include_tag 'jquery-1.4.1.min', 'jquery.require', 'html5', action_name %>
+<%= yield :head %>
+
+</head>
+<body>
+<header>
+  <!-- site header -->
+  <hgroup id='title'>
+    <!-- squashes subtitle in doc outline -->
+    <%= image_tag "darwin_pharmacy.png" %>
+    <!--
+	<h1>Darwin Pharmacy</h1>
+    <h2>Happy and Healthy</h2>
+	-->
+  </hgroup>
+  <hgroup id='login'>
+    <% if current_user %>
+      <%= link_to "Edit Profile",edit_user_path(current_user) %>  
+      <%= link_to "Log out", logout_path %>
+    <% else %>
+      <%= link_to "Log in", login_path %>  
+    <% end %>
+  </hgroup>
+  <%= render :partial => 'layouts/user_links' %>
+
+</header>
+<div id='wrapper'>
+  <div id="container">
+    <div id='main'>
+      <%= yield %>
+    </div>
+  </div>
+  <aside>
+    <!-- sidebar -->
+    <%= yield :aside %>
+  </aside>
+  <div class='clear'></div>
+</div>
+<footer>
+<!-- site footer -->
+  <div class='tip'>
+      <p class='error banner'><%= flash[:error] %></p>
+      <p class='notice banner'><%= flash[:notice] %></p>
+  </div> 
+  <p>Copyright &copy; 2009 Darwin Pharma Pvt. Ltd. All rights reserved.</p>
+</footer>
+</body>
+</html>

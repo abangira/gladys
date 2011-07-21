@@ -1,0 +1,48 @@
+<dt>Login:</dt>
+<dd><%=h @user.login %></dd>
+
+<dt>e-mail:</dt>
+<dd><%=h @user.email %></dd>
+
+<dt>Phone:</dt>
+<dd><%=h @user.phone %></dd>
+
+<dt>Role:</dt>
+<dd><%=h @user.role.to_s.humanize %></dd>
+
+<dt>Crypted password:</dt>
+<dd><%=h @user.crypted_password %></dd>
+
+<dt>Password salt:</dt>
+<dd><%=h @user.password_salt %></dd>
+
+<dt>Persistence token:</dt>
+<dd><%=h @user.persistence_token %></dd>
+
+<dt>Single access token:</dt>
+<dd><%=h @user.single_access_token %></dd>
+
+<dt>Perishable token:</dt>
+<dd><%=h @user.perishable_token %></dd>
+
+<dt>Login count:</dt>
+<dd><%=h @user.login_count %></dd>
+
+<dt>Failed login count:</dt>
+<dd><%=h @user.failed_login_count %></dd>
+
+<dt>Last request at:</dt>
+<dd><%=h @user.last_request_at %></dd>
+
+<dt>Current login at:</dt>
+<dd><%=h @user.current_login_at %></dd>
+
+<dt>Current login ip:</dt>
+<dd><%=h @user.current_login_ip %></dd>
+
+<dt>Last login ip:</dt>
+<dd><%=h @user.last_login_ip %></dd>
+
+<br>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

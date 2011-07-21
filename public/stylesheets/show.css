@@ -1,0 +1,26 @@
+dt {
+	float: left;
+	clear: left;
+	width: 10em;
+}
+
+dd {
+/*	float: left;	*/
+	clear: right;
+}
+
+br {
+	clear: both;
+}
+
+h1 {
+	font-size: xx-large;
+}
+
+table {
+	width: 100%;
+}
+
+.print-only {
+	display: none;
+}
